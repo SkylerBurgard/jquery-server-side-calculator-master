@@ -14,30 +14,33 @@ function init() {
 }
 
 function clickAdd() {
-  operation = $('#js-btn-add');
+  operation = 'add';
+  //   $('#js-btn-add').val();
+  console.log(operation);
 }
 
 function clickSubtract() {
-  operation = $('#js-btn-subtract');
+  operation = 'subtract';
 }
 
 function clickMultiply() {
-  operation = $('#js-btn-multiply');
+  operation = 'multiply';
 }
 
 function clickDivide() {
-  operation = $('#js-btn-divide');
+  operation = 'divide';
 }
 
 function clickEquals() {
+  //   operation = 'equals';
   //   operation = $('#js-btn-equals');
   console.log('Equaled');
 
   // WRONG - operation = "Equals";
 
   const dataForServer = {
-    num1: $('#input-field-1').val(),
-    num2: $('#input-field-2').val(),
+    num1: parseInt($('#input-field-1').val()),
+    num2: parseInt($('#input-field-2').val()),
     operation: operation,
   };
   console.log(dataForServer);
@@ -45,7 +48,7 @@ function clickEquals() {
 }
 
 function clickClear() {
-  operation = $('#js-btn-clear');
+  operation = 'clear';
 }
 
 function postEquation(dataForServer) {
@@ -55,8 +58,8 @@ function postEquation(dataForServer) {
     data: dataForServer,
   })
     .then((response) => {
-      console.log(response);
-      getEquations();
+      console.log('POST', response);
+      //   getEquations();
     })
 
     .catch((err) => {
