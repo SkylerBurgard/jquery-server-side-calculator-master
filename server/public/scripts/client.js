@@ -1,6 +1,7 @@
 $(document).ready(init);
 
 let operation;
+let equation = [];
 
 function init() {
   $('#js-btn-add').on('click', clickAdd);
@@ -33,10 +34,7 @@ function clickDivide() {
 
 function clickEquals() {
   //   operation = 'equals';
-  //   operation = $('#js-btn-equals');
-  console.log('Equaled');
-
-  // WRONG - operation = "Equals";
+  //   console.log('Equaled');
 
   const dataForServer = {
     num1: parseInt($('#input-field-1').val()),
@@ -59,7 +57,7 @@ function postEquation(dataForServer) {
   })
     .then((response) => {
       console.log('POST', response);
-      //   getEquations();
+      getEquations();
     })
 
     .catch((err) => {
@@ -80,5 +78,14 @@ function getEquations() {
       console.warn(err);
     });
 
-  function render(response) {}
+  function render(answerObject) {
+    console.log(answerObject);
+    $('.js-output').append(
+      `<h2>${answerObject[answerObject.length - 1].answer} </h2>`
+    );
+    $('.js-output').empty();
+  }
 }
+
+//GET answer from POST(server) to client using get route
+//create variable globally

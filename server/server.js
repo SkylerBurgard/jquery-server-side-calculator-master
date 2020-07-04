@@ -5,17 +5,19 @@ const bodyParser = require('body-parser');
 const app = express();
 const PORT = 5000;
 
+const answerList = [];
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
 app.get('/math', (req, res) => {
-  res.send('Math');
+  res.send(answerList);
 });
 
 app.post('/math', (req, res) => {
   let equation = req.body;
-  let answer = null;
+  let answer = [];
 
   if (equation.operation === 'add') {
     answer = parseInt(equation.num1) + parseInt(equation.num2);
@@ -26,7 +28,9 @@ app.post('/math', (req, res) => {
   } else if (equation.operation === 'divide') {
     answer = parseInt(equation.num1) / parseInt(equation.num2);
   }
+  equation.answer = answer;
 
+  answerList.push(equation);
   console.log(answer);
   console.log(req.body);
   res.sendStatus(201);
@@ -34,4 +38,9 @@ app.post('/math', (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Server up and running');
+});
+
+app.get('/equation', (req, res) => {
+  console.log('get server info', answer);
+  res.send(answer);
 });
