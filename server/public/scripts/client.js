@@ -77,15 +77,14 @@ function getEquations() {
     .catch((err) => {
       console.warn(err);
     });
-
-  function render(answerObject) {
-    console.log(answerObject);
-    $('.js-output').append(
-      `<h2>${answerObject[answerObject.length - 1].answer} </h2>`
-    );
-    $('.js-output').empty();
-  }
 }
 
+function render(answerObject) {
+  console.log(answerObject);
+  for (let equation of answerObject) {
+    $('#js-output').append(`<h2>${equation.answer} </h2>`);
+  }
+  //   $('#js-output').empty();
+}
 //GET answer from POST(server) to client using get route
 //create variable globally

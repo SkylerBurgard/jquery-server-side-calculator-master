@@ -17,7 +17,7 @@ app.get('/math', (req, res) => {
 
 app.post('/math', (req, res) => {
   let equation = req.body;
-  let answer = [];
+  let answer;
 
   if (equation.operation === 'add') {
     answer = parseInt(equation.num1) + parseInt(equation.num2);
@@ -31,8 +31,8 @@ app.post('/math', (req, res) => {
   equation.answer = answer;
 
   answerList.push(equation);
-  console.log(answer);
-  console.log(req.body);
+  console.log(`IM THE ANSWER: ${answer}`);
+  console.log(`IM THE EQUATION: ${equation}`);
   res.sendStatus(201);
 });
 
