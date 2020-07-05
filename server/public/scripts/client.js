@@ -2,6 +2,7 @@ $(document).ready(init);
 
 let operation;
 let equation = [];
+//Defining operation and setting equation (req.body) to empty array.
 
 function init() {
     $('#js-btn-add').on('click', clickAdd);
@@ -13,6 +14,7 @@ function init() {
 
     getEquations();
 }
+//init function that has our click events for each type of operation.
 
 function clickAdd() {
     operation = 'add';
@@ -35,7 +37,7 @@ function clickDivide() {
 function clickEquals() {
     //   operation = 'equals';
     //   console.log('Equaled');
-
+    //functions for each type of operation (+ - * /)
     const dataForServer = {
         num1: parseInt($('#input-field-1').val()),
         num2: parseInt($('#input-field-2').val()),
@@ -44,6 +46,7 @@ function clickEquals() {
     console.log(dataForServer);
     postEquation(dataForServer);
 }
+//turning our numbers from strings to numbers using parseInt
 
 function clickClear() {
     operation = 'clear';
@@ -63,7 +66,7 @@ function postEquation(dataForServer) {
         .catch((err) => {
             console.warn(err);
         });
-}
+} //post route to send dataFromServer which is our re.body/ equation
 
 function getEquations() {
     $.ajax({
@@ -77,7 +80,7 @@ function getEquations() {
         .catch((err) => {
             console.warn(err);
         });
-}
+} // GET route to get our response (not positive how to explain it? maybe idk it well enough.)
 
 // function render(answerObject) {
 //     console.log(answerObject);
@@ -93,6 +96,10 @@ function render(answerObject) {
 
         // $('#js-output').empty(`<h2>${equation.answer} </h2>`);
     }
-}
+} // render function the appends and empties our equations
+
+
+
+
 //GET answer from POST(server) to client using get route
 //create variable globally
