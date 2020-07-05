@@ -1,9 +1,13 @@
-# Project Name
+# SERVER SIDE CALCULATOR
 
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+### The Server Side Calculator is a calculator used for basic math equations.
 
-## Description
+### When the user fills out both input fields with their desired numbers (ie. 22 + 22), then presses the operation of their choosing (in this example we are using addition),the calculator appends their answer to the DOM & in our console.
 
-Your project description goes here. What problem did you solve? How did you solve it?
+# How to use:
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+### The user must first fill both inputs fields with numbers of their choosing, then click the operation type they want, along with the "equals" button. After pressing equals (=), the calculator gives them their answer.
+
+# Technologies used:
+
+#### HTML/CSS, JavaScript
